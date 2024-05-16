@@ -1,0 +1,48 @@
+name: Zigbee2MQTT
+version: 1.0.0
+bundle_id: com.koenkk.zigbee2mqtt.zigbee2mqtt
+app_info: ""
+hos_version: 2024.1.0
+config_version: 1.0.0
+docker_config:
+    image_name: koenkk/zigbee2mqtt
+    tag: 1.33.1
+    container_name: zigbee2mqtt
+    network_mode: host
+    icon: icon.png
+    web_ui_port: "8099"
+    ports:
+        - network_protocol: tcp
+          container: "8099"
+          host: "8099"
+    volumes:
+        - container: /app/data
+          host: /var/data/zigbee2mqtt/data
+        - container: /run/udev:ro
+          host: /run/udev
+        - container: /dev/bus/usb
+          host: /dev/bus/usb
+    env_variables:
+        - name: TZ
+          value: Asia/Shanghai
+    devices: []
+    command: []
+    privileged_mode: true
+    restart_policy: unless-stopped
+    resources_limit: false
+    entrypoint: /bin/sh
+    maximum_cpu_usage: "0"
+    memory_limit: ""
+    container_hostname: zigbee2mqtt
+hdp_update_info: ""
+init_config: flow_config.yml
+uninstall: ""
+resource_files:
+  - file_type: file
+    path: script.sh
+author: houzzkit-team
+author_introduction_url: ""
+create_time: ""
+update_author: ""
+update_author_introduction_url: ""
+hdp_create_time: 1710987790

@@ -1,0 +1,70 @@
+name: Plex Media Server
+version: 1.0.0
+bundle_id: com.linuxserver.plex.PlexMediaServer
+app_info: app_info.md
+hos_version: 2024.1.0
+config_version: 1.0.0
+docker_config:
+    image_name: linuxserver/plex
+    tag: 1.32.6
+    container_name: Plex Media Server
+    network_mode: bridge
+    icon: icon.png
+    web_ui_port: "32400"
+    ports:
+        - network_protocol: tcp
+          container: "32400"
+          host: "32400"
+        - network_protocol: tcp
+          container: "8324"
+          host: "8324"
+        - network_protocol: tcp
+          container: "1900"
+          host: "11900"
+        - network_protocol: tcp
+          container: "5353"
+          host: "15353"
+        - network_protocol: tcp
+          container: "32410"
+          host: "32410"
+        - network_protocol: tcp
+          container: "32412"
+          host: "32412"
+        - network_protocol: tcp
+          container: "32413"
+          host: "32413"
+        - network_protocol: tcp
+          container: "32414"
+          host: "32414"
+        - network_protocol: tcp
+          container: "32469"
+          host: "32469"
+    volumes:
+        - container: /config
+          host: /var/data/plex/config
+        - container: /tv
+          host: /var/data/plex/tv
+        - container: /movies
+          host: /var/data/plex/movies
+    env_variables:
+      - name: TZ
+        value: Asia/Shanghai
+    devices: []
+    command: []
+    privileged_mode: false
+    restart_policy: "no"
+    resources_limit: false
+    entrypoint: /bin/bash
+    maximum_cpu_usage: "0"
+    memory_limit: "0"
+    container_hostname: PlexMediaServer
+hdp_update_info: ""
+init_script: ""
+uninstall: ""
+resource_files: []
+author: houzzkit-team
+author_introduction_url: "https://www.houzzkit.com"
+create_time: "1712909481"
+update_author: ""
+update_author_introduction_url: ""
+hdp_create_time: ""

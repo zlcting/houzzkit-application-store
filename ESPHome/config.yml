@@ -1,0 +1,42 @@
+name: ESPHome
+version: 1.0.0
+bundle_id: com.esphome.esphome.ESPHome
+app_info: app_info.md
+hos_version: "2024.1.0"
+config_version: 1.0.0
+docker_config:
+    image_name: esphome/esphome
+    tag: 2023.8.2
+    container_name: ESPHome
+    network_mode: bridge
+    icon: icon.png
+    web_ui_port: "6052"
+    ports:
+        - network_protocol: tcp
+          container: "6052"
+          host: "6052"
+    volumes:
+        - container: /config
+          host: /var/data/esphome/config
+    env_variables:
+        - name: TZ
+          value: Asia/Shanghai
+    devices: []
+    command: []
+    privileged_mode: false
+    restart_policy: "no"
+    resources_limit: false
+    entrypoint: /bin/bash
+    maximum_cpu_usage: "0"
+    memory_limit: "0"
+    container_hostname: ESPHome
+hdp_update_info: ""
+init_script: ""
+uninstall: ""
+resource_files: []
+author: houzzkit-team
+author_introduction_url: "https://www.houzzkit.com"
+create_time: "1712907901"
+update_author: ""
+update_author_introduction_url: ""
+hdp_create_time: ""

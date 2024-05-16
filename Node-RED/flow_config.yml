@@ -1,0 +1,27 @@
+version: 1.0.0
+step_pointer: "step1"
+steps:
+  step1:
+    step_type: install_integration
+    parameters:
+      integration_path: node_red.zip
+    next_step: step2
+  step2:
+    step_type: start_container
+    next_step: step3
+  step3:
+    step_type: run_shell_script_in_container
+    parameters:
+      shell_path: node.sh
+      run_path: "/var/local"
+      shell_info: '更换npm源，加速Node-RED节点下载速度'
+    next_step: step4
+  step4:
+    step_type: get_ha_access_token
+    next_step: step5
+  step5:
+    step_type: run_shell_script
+    parameters:
+      shell_path: init_node_script.sh
+      shell_parameters: ["home-assistant-token"]
+      shell_info: '自动配置Node-RED集成，安装及配置Node-RED和Home Assistant通讯节点'

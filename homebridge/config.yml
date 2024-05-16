@@ -1,0 +1,45 @@
+name: HomeBridge
+version: "1.0.0"
+bundle_id: com.oznu.homebridge.homebridge
+app_info: app_info.md
+hos_version: "2023.1.4"
+config_version: 1.0.0
+docker_config:
+    image_name: oznu/homebridge
+    tag: "2023-01-08"
+    container_name: homebridge
+    network_mode: bridge
+    icon: icon.png
+    web_ui_port: "8581"
+    ports:
+        - network_protocol: tcp
+          container: "8581"
+          host: "8581"
+        - network_protocol: tcp
+          container: "8288"
+          host: "8288"
+    volumes:
+        - container: /homebridge
+          host: /var/data/homebridge
+    env_variables:
+        - name: TZ
+          value: Asia/Shanghai
+    devices: []
+    command: []
+    privileged_mode: false
+    restart_policy: "no"
+    resources_limit: false
+    entrypoint: /bin/bash
+    maximum_cpu_usage: "0"
+    memory_limit: "0"
+    container_hostname: homebridge
+hdp_update_info: ""
+init_script: ""
+uninstall: ""
+resource_files: []
+author: houzzkit-team
+author_introduction_url: "https://www.houzzkit.com"
+create_time: "1712910501"
+update_author: ""
+update_author_introduction_url: ""
+hdp_create_time: ""

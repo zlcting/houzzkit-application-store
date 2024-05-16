@@ -1,0 +1,26 @@
+version: 1.0.0
+step_pointer: "step1"
+steps:
+  step1:
+    step_type: form
+    title : 配置MQTT服务器
+    form:
+      - type: input
+        key: mqtt_service
+        value: mqtt://127.0.0.1:1883
+        placeholder: ''
+        label: 填入MQTT服务地址
+        required: true
+        disable: false
+    next_step : step2
+  step2:
+    step_type: run_shell_script
+    parameters:
+      shell_path: script.sh
+      shell_parameters: [ "mqtt_service" ]
+    next_step: step3
+  step3:
+    step_type: create_file
+    parameters:
+      file_path: '/tmp/configuration.yaml'
+      write_to_path: '/var/data/zigbee2mqtt/data/configuration.yaml'

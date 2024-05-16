@@ -1,0 +1,48 @@
+name: Node-RED
+version: 1.0.0
+bundle_id: com.nodered.node-red.Node-RED
+app_info: app_info.md
+hos_version: "2024.1.0"
+config_version: 1.0.0
+docker_config:
+  image_name: nodered/node-red
+  tag: 3.0.2-14
+  container_name: Node-RED
+  network_mode: bridge
+  icon: icon.png
+  web_ui_port: "1880"
+  ports:
+    - network_protocol: tcp
+      container: "1880"
+      host: "1880"
+  volumes:
+    - container: /data
+      host: /var/data/node-red/data
+  env_variables: []
+  devices: []
+  command: []
+  privileged_mode: false
+  restart_policy: ""
+  resources_limit: false
+  entrypoint: ""
+  maximum_cpu_usage: ""
+  memory_limit: "0"
+  container_hostname: Node-RED
+hdp_update_info: ""
+init_config: flow_config.yml
+uninstall: ""
+resource_files:
+  - file_type: dir
+    path: hass
+  - file_type: file
+    path: node_red.zip
+  - file_type: file
+    path: node_red.py
+  - file_type: file
+    path: init_node_script.sh
+author: houzzkit-team
+author_introduction_url: "https://www.houzzkit.com"
+create_time: "1713169037"
+update_author: ""
+update_author_introduction_url: ""
+hdp_create_time: ""

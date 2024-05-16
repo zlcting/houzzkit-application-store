@@ -1,0 +1,48 @@
+name: "Portainer"
+version: 1.0.0
+bundle_id: com.portainer.portainer-ce.portainer-ce
+app_info: app_info.md
+hos_version: 2024.1.0
+config_version: 1.0.0
+docker_config:
+    image_name: portainer/portainer-ce
+    tag: linux-arm64-2.19.5
+    container_name: Portainer
+    network_mode: bridge
+    icon: icon.png
+    web_ui_port: "9000"
+    ports:
+        - network_protocol: tcp
+          container: "9000"
+          host: "9000"
+    volumes:
+        - container: /var/run/docker.sock
+          host: /var/run/docker.sock
+        - container: /data
+          host: /var/data/portainer/data
+        - container: /public
+          host: /var/data/portainer/public
+    env_variables: []
+    devices: []
+    command: []
+    privileged_mode: false
+    restart_policy: "no"
+    resources_limit: false
+    entrypoint: /portainer
+    maximum_cpu_usage: "0"
+    memory_limit: "0"
+    container_hostname: portainer
+hdp_update_info: ""
+init_config: flow_config.yml
+uninstall: ""
+resource_files:
+    - file_type: file
+      path: script.sh
+    - file_type: file
+      path: portainer-ce-cn.tar.gz
+author: houzzkit-team
+author_introduction_url: "https://www.houzzkit.com"
+create_time: "1715752831"
+update_author: ""
+update_author_introduction_url: ""
+hdp_create_time: 2024-05-15 14:50:37.830376929 +0800 CST m=+9184.161730250

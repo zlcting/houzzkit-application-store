@@ -1,0 +1,67 @@
+name: EMQX
+version: 1.0.0
+bundle_id: com.emqx.EMQX
+app_info: app_info.md
+hos_version: "2024.1.0"
+config_version: 1.0.0
+docker_config:
+    image_name: emqx
+    tag: 5.1.6
+    container_name: EMQX
+    network_mode: bridge
+    icon: icon.png
+    web_ui_port: "18083"
+    ports:
+        - network_protocol: tcp
+          container: "18083"
+          host: "18083"
+        - network_protocol: tcp
+          container: "11883"
+          host: "11883"
+        - network_protocol: tcp
+          container: "8883"
+          host: "8883"
+        - network_protocol: tcp
+          container: "8084"
+          host: "8084"
+        - network_protocol: tcp
+          container: "8083"
+          host: "8083"
+        - network_protocol: tcp
+          container: "5369"
+          host: "5369"
+        - network_protocol: tcp
+          container: "4370"
+          host: "4370"
+        - network_protocol: tcp
+          container: "1883"
+          host: "18883"
+    volumes:
+        - container: /opt/emqx/data
+          host: /var/data/emqx/data
+        - container: /opt/emqx/emqx.conf
+          host: /var/data/emqx/emqx.conf
+        - container: /opt/emqx/log
+          host: /var/data/emqx/log
+    env_variables:
+      - name: TZ
+        value: Asia/Shanghai
+    devices: []
+    command: []
+    privileged_mode: false
+    restart_policy: "no"
+    resources_limit: false
+    entrypoint: /bin/bash
+    maximum_cpu_usage: "0"
+    memory_limit: "0"
+    container_hostname: EMQX
+hdp_update_info: ""
+init_script: ""
+uninstall: ""
+resource_files: []
+author: houzzkit-team
+author_introduction_url: "https://www.houzzkit.com"
+create_time: "1712908940"
+update_author: ""
+update_author_introduction_url: ""
+hdp_create_time: ""

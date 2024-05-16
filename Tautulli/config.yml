@@ -1,0 +1,44 @@
+name: Tautulli
+version: 1.0.0
+bundle_id: com.tautulli.tautulli.Tautulli
+app_info: app_info.md
+hos_version: "2024.1.0"
+config_version: 1.0.0
+docker_config:
+    image_name: tautulli/tautulli
+    tag: v2.13.0
+    container_name: Tautulli
+    network_mode: bridge
+    icon: icon.png
+    web_ui_port: "8181"
+    ports:
+        - network_protocol: tcp
+          container: "8181"
+          host: "8181"
+    volumes:
+        - container: /config
+          host: /var/data/tautulli/config
+        - container: /plex-config
+          host: /var/data/tautulli/plex-config
+    env_variables:
+        - name: TZ
+          value: Asia/Shanghai
+    devices: []
+    command: []
+    privileged_mode: false
+    restart_policy: "no"
+    resources_limit: false
+    entrypoint: /bin/bash
+    maximum_cpu_usage: "0"
+    memory_limit: "0"
+    container_hostname: Tautulli
+hdp_update_info: ""
+init_script: ""
+uninstall: ""
+resource_files: []
+author: houzzkit-team
+author_introduction_url: "https://www.houzzkit.com"
+create_time: "1712909713"
+update_author: ""
+update_author_introduction_url: ""
+hdp_create_time: ""

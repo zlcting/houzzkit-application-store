@@ -1,0 +1,47 @@
+name: Traccar
+version: 1.0.0
+bundle_id: com.traccar.traccar.Traccar
+app_info: app_info.md
+hos_version: "2024.1.0"
+config_version: 1.0.0
+docker_config:
+    image_name: traccar/traccar
+    tag: 5.7-ubuntu
+    container_name: Traccar
+    network_mode: bridge
+    icon: icon.png
+    web_ui_port: "8082"
+    ports:
+        - network_protocol: tcp
+          container: "8082"
+          host: "8082"
+        - network_protocol: tcp
+          container: "5000"
+          host: "5000"
+    volumes:
+        - container: /opt/traccar/logs
+          host: /var/data/traccar/logs
+        - container: /opt/traccar/data
+          host: /var/data/traccar/data
+    env_variables:
+      - name: TZ
+        value: Asia/Shanghai
+    devices: []
+    command: []
+    privileged_mode: false
+    restart_policy: "no"
+    resources_limit: false
+    entrypoint: /bin/bash
+    maximum_cpu_usage: "0"
+    memory_limit: "0"
+    container_hostname: Traccar
+hdp_update_info: ""
+init_script: ""
+uninstall: ""
+resource_files: []
+author: houzzkit-team
+author_introduction_url: ""
+create_time: "1712909845"
+update_author: ""
+update_author_introduction_url: ""
+hdp_create_time: ""
